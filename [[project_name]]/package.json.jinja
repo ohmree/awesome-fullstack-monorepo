@@ -1,0 +1,63 @@
+{
+  "name": "[[ project_name ]]",
+  "author": "[[ author ]]",
+  "license": "[[ license ]]",
+  "version": "0.0.1",
+  "description": "TODO",
+  "private": true,
+  "xo": {
+    "space": true,
+    "prettier": true,
+    "plugins": [
+      "eslint-plugin-solid"
+    ],
+    "rules": {
+      "unicorn/prefer-module": "off"
+    },
+    "overrides": [
+      {
+        "files": "packages/client/src/**/*.ts",
+        "rules": {
+          "unicorn/prefer-module": "error"
+        }
+      },
+      {
+        "files": "packages/bot/src/discords/*-discord.ts",
+        "rules": {
+          "new-cap": "off"
+        }
+      }
+    ],
+    "settings": {
+      "import/resolver": {
+        "typescript": {
+          "alwaysTryTypes": true
+        }
+      }
+    }
+  },
+  "scripts": {
+    "dev:client": "pnpm m run dev --filter client",
+    "dev:bot": "pnpm m run dev --filter bot",
+    "dev:server": "pnpm m run dev --filter server",
+    "dev": "pnpm dev:server",
+    "build:client": "pnpm run build --filter client",
+    "build:backend": "tsc -b",
+    "build": "concurrently pnpm:build:backend pnpm:build:client",
+    "start": "pnpm m run start --filter server",
+    "lint": "xo",
+    "fix": "xo --fix",
+    "clean": "pnpm m run clean --filter server client"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "cross-env": "^7.0.3",
+    "eslint-plugin-json": "^3.0.0",
+    "rimraf": "^3.0.2",
+    "xo": "^0.42.0"
+  },
+  "dependencies": {
+    "pm2": "^5.1.0",
+    "ts-node": "^10.1.0"
+  }
+}

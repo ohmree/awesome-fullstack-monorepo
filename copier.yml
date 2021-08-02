@@ -1,0 +1,21 @@
+project_name:
+  type: str
+  default: my-project
+
+author:
+  type: str
+  default: ""
+
+license:
+  type: str
+
+database:
+  default: postgres
+  type: str
+  choices:
+    - postgres
+    - mysql
+    - sqlite
+
+_templates_suffix: .jinja
+_subdirectory: [[project_name]]
