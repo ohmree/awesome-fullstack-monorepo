@@ -8,4 +8,4 @@ license:
 database: "postgres, mysql or sqlite"
 
 _templates_suffix: .jinja
-_subdirectory: "[[ project_name ]]"
+_subdirectory: "template"
