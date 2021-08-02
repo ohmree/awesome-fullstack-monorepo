@@ -2,8 +2,7 @@ project_name: "replace me"
 
 author: "replace me"
 
-license:
-  type: str
+license: "replace me"
 
 database: "postgres, mysql or sqlite"
 
