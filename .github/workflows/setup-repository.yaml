@@ -57,11 +57,8 @@ jobs:
 
       - name: Move files to root
         shell: bash
-        # The copier-temp/ folder contains a single folder which is the
-        # generated project by copier. We want to move all the project
-        # files into the root directory so we can reinitialize git in the next step
         run: |
-          rsync -r ./copier-temp/* . && \
+          rsync -r ./copier-temp/{.[!.],}* . && \
           rm -rf ./copier-temp/
 
       - name: Reinitialize git repository
