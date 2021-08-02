@@ -27,7 +27,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
-          # Comminting workflow files using the regular GITHUB_TOKEN will fail with
+          # Comminting workflow files using the regular GITHUB_TOKEN will fail with 
           # `Git Error: Refusing to allow a GitHub App to create or update workflow without workflows permission`.
           # This is by design to prevent third-parties from adding malicious workflow files.
           #
@@ -54,6 +54,15 @@ jobs:
           ! -name 'copier-temp' \
           ! -name '.' \
           ! -exec rm -rf {} +
+
+      - name: Move files to root
+        shell: bash
+        # The copier-temp/ folder contains a single folder which is the
+        # generated project by copier. We want to move all the project
+        # files into the root directory so we can reinitialize git in the next step
+        run: |
+          rsync -r ./copier-temp/* . && \
+          rm -rf ./copier-temp/
 
       - name: Reinitialize git repository
         shell: bash
