@@ -1,21 +1,11 @@
-project_name:
-  type: str
-  default: my-project
+project_name: "replace me"
 
-author:
-  type: str
-  default: ""
+author: "replace me"
 
 license:
   type: str
 
-database:
-  default: postgres
-  type: str
-  choices:
-    - postgres
-    - mysql
-    - sqlite
+database: "postgres, mysql or sqlite"
 
 _templates_suffix: .jinja
-# _subdirectory: "[[ project_name ]]"
+_subdirectory: "[[ project_name ]]"
